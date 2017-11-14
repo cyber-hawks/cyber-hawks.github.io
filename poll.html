@@ -29,11 +29,14 @@
  </script>
 <script>
 var uemail;
+var udis;
 firebase.auth().onAuthStateChanged(function(user) {
 if(user){
 uemail = user.email;
+udis = user.displayName;
 }else{
 uemail = "null@null.null";
+udis = "nullName";
 }
 });
 
@@ -45,11 +48,18 @@ return "null@null.null";
 }
 }
 
+function getDisplayName(){
+if(uemail != null){
+return udis;
+}else{
+return "nullName";
+}
+}
+
 function writeData(data){
 var email = getEmail();
-var d = new Date();
-var time = d.getTime();
-firebase.database().ref('polls/' + time).set({
+var disp = getDisplayName();
+firebase.database().ref('polls/' + disp).set({
 	data: data,
 	email: email
 });
