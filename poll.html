@@ -1,0 +1,63 @@
+<!Doctype html>
+<HTML>
+<meta http-equiv="content-type" content="text/html" charset="utf-8" />
+<form action="">
+<input type="radio" name="Options" value="A">Monday <br />
+<input type="radio" name="Options" value="B">Tuesday <br />
+<input type="radio" name="Options" value="C">Thursday <br />
+<input type="radio" name="Options" value="D">Friday <br />
+</form>
+<button onclick="b()">Post</button>
+
+<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-messaging.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAIHHveDV6YKQvHxN_jsD8Qg0sppOz4sEA",
+    authDomain: "cyber-hawks.firebaseapp.com",
+    databaseURL: "https://cyber-hawks.firebaseio.com",
+    projectId: "cyber-hawks",
+    storageBucket: "cyber-hawks.appspot.com",
+    messagingSenderId: "866910765507"
+  };
+  firebase.initializeApp(config);
+ </script>
+<script>
+function getEmail(){
+firebase.auth().onAuthStateChanged(function(user) {
+if(user){
+return user.email;
+}else{
+return "null@null.null";
+}
+});
+}
+
+function writeData(data){
+var email = getEmail();
+firebase.database().ref('polls/' + email).set({
+	data: data
+});
+}
+
+function b(){
+var radios = document.getElementsByName('Options');
+for (var i = 0, length = radios.length; i < length; i++)
+{
+ if (radios[i].checked)
+ {
+  console.log(radios[i].value);
+  writeData(radios[i].value);
+  break;
+ }
+}
+}
+</script>
+
+
+</HTML>
