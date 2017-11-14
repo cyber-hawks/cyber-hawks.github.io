@@ -1,0 +1,89 @@
+<!--Version 0.1a-->
+<!Doctype html>
+<HTML>
+<title>Update Info</title>
+
+<style>
+#itle {
+	color: #C3C3C3;
+	size: 20;
+}
+#ppl {
+	color: #C3C3C3;
+	size:8;
+}
+a:link#ink, a:visited#ink, a:hover#ink, a:active#ink {
+	position: fixed;
+	color: #C3C3C3;
+	text-decoration: none;
+	right: 0;
+	bottom: 0;
+	font-size: 20pt;
+} 
+a:link#ink2, a:visited#ink2, a:hover#ink2, a:active#ink2 {
+	color: #C3C3C3;
+	text-decoration: none;
+	font-size: 20pt;
+} 
+#status {
+	position: fixed;
+	color: #C3C3C3;
+	text-decoration: none;
+	right: 0;
+	bottom: 0;
+	font-size: 20pt;
+} 
+</style>
+
+<body background="../bg.png">
+<div id="itle"><h1 align="left" id="til"><b>User Update: </b></h1></div>
+Username: <input id="un" /><br />
+<p id="status"><a href="signOut.html" id="ink2">Sign Out?</a></p>
+
+
+
+<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-messaging.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAIHHveDV6YKQvHxN_jsD8Qg0sppOz4sEA",
+    authDomain: "cyber-hawks.firebaseapp.com",
+    databaseURL: "https://cyber-hawks.firebaseio.com",
+    projectId: "cyber-hawks",
+    storageBucket: "cyber-hawks.appspot.com",
+    messagingSenderId: "866910765507"
+  };
+  firebase.initializeApp(config);
+  
+  function myFunction(){
+firebase.auth().currentUser.updateProfile({
+  displayName: document.getElementById("un").value
+}).then(function() {
+  // Update successful.
+  document.getElementById("til").innerHTML = "Updated!";
+}).catch(function(error) {
+  // An error happened.
+});
+
+}
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    var displayName = user.displayName;
+    var email = user.email;
+    var uid = user.uid;
+document.getElementById("til").innerHTML += user.displayName + " " + user.email;
+  } else {
+  }
+});
+</script>
+
+<button onclick="myFunction()">Click</button>
+
+<a href="homePage.html" id="ink">Return To Javascript Home Menu</a></body>
+</HTML>
