@@ -47,8 +47,10 @@ return "null@null.null";
 
 function writeData(data){
 var email = getEmail();
-firebase.database().ref('polls/' + email).set({
-	data: data
+var d = new Date();
+var time = d.getTime();
+firebase.database().ref('polls/' + time).set({
+	email: data
 });
 }
 
