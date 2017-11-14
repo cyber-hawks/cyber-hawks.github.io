@@ -2,6 +2,14 @@
 <HTML>
 <meta http-equiv="content-type" content="text/html" charset="utf-8" />
 
+<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-messaging.js"></script>
+ </script>
+
 <style>
 #vas {
 	position: fixed;
@@ -22,4 +30,29 @@ ctx.fillRect(0, 0, canvas.width, canvas.height);
 setTimeout(function(){document.getElementById("p").innerHTML = "Wrote Something after a delay"},1000);
 </script>-->
 
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAIHHveDV6YKQvHxN_jsD8Qg0sppOz4sEA",
+    authDomain: "cyber-hawks.firebaseapp.com",
+    databaseURL: "https://cyber-hawks.firebaseio.com",
+    projectId: "cyber-hawks",
+    storageBucket: "cyber-hawks.appspot.com",
+    messagingSenderId: "866910765507"
+  };
+  firebase.initializeApp(config);
+  
+  firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    var displayName = user.displayName;
+    var email = user.email;
+    var uid = user.uid;
+var canvas = document.getElementById("vas");
+var ctx = canvas.getContext("2d");
+ctx.fillStyle = "#00FF00";
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+  } else {
+  }
+});
 </HTML>
