@@ -1,7 +1,25 @@
 <!Doctype html>
 <HTML>
 <meta http-equiv="content-type" content="text/html" charset="utf-8" />
-<title>Cyber Hawks</title>
 
+<style>
+#vas {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+    background-color: #FF0000;
+}
+</style>
+
+<title>Cyber Hawks</title>
+<canvas id="vas" width="50" height="50">This Browser Doesn't Support a HTML 5 Canvas</canvas>
+
+<!--<script>
+var canvas = document.getElementById("vas");
+var ctx = canvas.getContext("2d");
+ctx.fillStyle = "#00FF00";
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+setTimeout(function(){document.getElementById("p").innerHTML = "Wrote Something after a delay"},1000);
+</script>-->
 
 </HTML>
