@@ -8,7 +8,6 @@
 <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-firestore.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-messaging.js"></script>
- </script>
 
 <style>
 #vas {
@@ -41,7 +40,6 @@ setTimeout(function(){document.getElementById("p").innerHTML = "Wrote Something 
     messagingSenderId: "866910765507"
   };
   firebase.initializeApp(config);
-  
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
 var canvas = document.getElementById("vas");
