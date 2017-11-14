@@ -90,7 +90,7 @@ for (var i = 0, length = radios.length; i < length; i++)
 {
  if (radios[i].checked)
  {
-  writeData(radios[i].value, radios[i].nextSibling);
+  writeData(radios[i].value, radios[i].nextSibling.data);
   break;
  }
 }
