@@ -1,0 +1,60 @@
+<!--Version 0.1a-->
+<!Doctype html>
+<HTML>
+<title>Sign Out</title>
+
+<style>
+#itle {
+	color: #C3C3C3;
+	size: 20;
+}
+#ppl {
+	color: #C3C3C3;
+	size:8;
+}
+a:link#ink, a:visited#ink, a:hover#ink, a:active#ink {
+	position: fixed;
+	color: #C3C3C3;
+	text-decoration: none;
+	right: 0;
+	bottom: 0;
+	font-size: 20pt;
+} 
+a:link#ink2, a:visited#ink2, a:hover#ink2, a:active#ink2 {
+	color: #C3C3C3;
+	text-decoration: none;
+} 
+</style>
+
+<body>
+<div id="itle"><h1 align="left" id="til"><b>Sign Out?</b></h1></div>
+<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-messaging.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAIHHveDV6YKQvHxN_jsD8Qg0sppOz4sEA",
+    authDomain: "cyber-hawks.firebaseapp.com",
+    databaseURL: "https://cyber-hawks.firebaseio.com",
+    projectId: "cyber-hawks",
+    storageBucket: "cyber-hawks.appspot.com",
+    messagingSenderId: "866910765507"
+  };
+  firebase.initializeApp(config);
+  function myFunction(){
+  firebase.auth().signOut().then(function() {
+  document.getElementById("til").innerHTML = "Signed out";
+}, function(error) {
+});
+}
+if(firebase.auth().currentUser == null){}else{window.location.replace("http://cyber-hawks.github.io/createAcct.html");}
+</script>
+
+<button onclick="myFunction()">Sign Out!</button>
+
+<a href="index.html" id="ink">Return To Home Menu</a></body>
+</HTML>
