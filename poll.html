@@ -50,7 +50,8 @@ var email = getEmail();
 var d = new Date();
 var time = d.getTime();
 firebase.database().ref('polls/' + time).set({
-	email: data
+	data: data,
+	email: email
 });
 }
 
