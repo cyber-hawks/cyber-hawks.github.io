@@ -42,11 +42,12 @@ setTimeout(function(){document.getElementById("p").innerHTML = "Wrote Something 
   };
   firebase.initializeApp(config);
   
-if(firebase.auth().currentUser != null){
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
 var canvas = document.getElementById("vas");
 var ctx = canvas.getContext("2d");
 ctx.fillStyle = "#00FF00";
 ctx.fillRect(0, 0, canvas.width, canvas.height);
-  }
-});
+}
+}
 </HTML>
