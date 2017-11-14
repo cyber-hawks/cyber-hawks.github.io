@@ -1,13 +1,26 @@
 <!Doctype html>
 <HTML>
 <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+
+<style>
+#itle {
+	color: #6699ff;
+	size: 20;
+}
+#ppl {
+	color: #6699ff;
+	size:8;
+}</style>
+
+<h1 id="itle">What other day would be the best day to meet?</h1><br />
 <form action="">
-<input type="radio" name="Options" value="A">Monday <br />
-<input type="radio" name="Options" value="B">Tuesday <br />
-<input type="radio" name="Options" value="C">Thursday <br />
-<input type="radio" name="Options" value="D">Friday <br />
+<input id="ppl" type="radio" name="Options" value="A">Monday <br />
+<input id="ppl" type="radio" name="Options" value="B">Tuesday <br />
+<input id="ppl" type="radio" name="Options" value="C">Thursday <br />
+<input id="ppl" type="radio" name="Options" value="D">Friday <br />
 </form>
-<button onclick="b()">Post</button>
+<button onclick="b()">Submit</button><br />
+<h1 id="itle"></h1>
 
 <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-app.js"></script>
@@ -63,6 +76,7 @@ firebase.database().ref('polls/' + disp).set({
 	data: data,
 	email: email
 });
+	document.getElementById("").innerHTML = Submitted;
 }
 
 function b(){
@@ -71,7 +85,6 @@ for (var i = 0, length = radios.length; i < length; i++)
 {
  if (radios[i].checked)
  {
-  console.log(radios[i].value);
   writeData(radios[i].value);
   break;
  }
