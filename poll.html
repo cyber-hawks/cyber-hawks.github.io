@@ -28,14 +28,21 @@
   firebase.initializeApp(config);
  </script>
 <script>
-function getEmail(){
+var uemail;
 firebase.auth().onAuthStateChanged(function(user) {
 if(user){
-return user.email;
+uemail = user.email;
+}else{
+uemail = "null@null.null";
+}
+});
+
+function getEmail(){
+if(uemail != null){
+return uemail;
 }else{
 return "null@null.null";
 }
-});
 }
 
 function writeData(data){
